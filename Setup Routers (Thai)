@@ -5,23 +5,17 @@
 
 2. ติดตั้ง Docker-compose ตัวล่าสุด
 >  VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
-
 >  DESTINATION=/usr/local/bin/docker-compose
-
 >  sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
-
 >  sudo chmod 755 $DESTINATION
 
 3. ตรวจสอบ Docker-compose 
 > docker-compose --version
+
 4. ติดตั้ง Router
-
 > git clone https://github.com/connext/nxtp-router-docker-compose.git
-
 > cd nxtp-router-docker-compose
-
 > git checkout amarok
-
 > docker pull ghcr.io/connext/router:0.2.0-alpha.10
 
 5. สร้างไฟล์ .env
@@ -34,7 +28,7 @@ ROUTER_VERSION=0.2.0-alpha.10
 7. สร้างไฟล์ key.yaml
 > cp key.example.yaml key.yaml
 
-8. แก้ไข  file key.yaml 
+8. แก้ไข file key.yaml 
 โดยเอา privateKey มาใส่ แทนตัวอีกษรสีแดง
 type: "file-raw"
 keyType: "SECP256K1"
@@ -97,7 +91,7 @@ Edit ให้เป็นแบบนี้
 
 14. ตรวจสอบ web3SignerUrl ทำงานถูกต้องไหม
 >  curl localhost:8000/config
-จะะต้องได้ Address ที่เราเอา Private Key ไปใส่ออกมา
+จะต้องได้ Address ที่เราเอา Private Key ไปใส่ออกมา
 
 15. ขั้นตอนการสร้าง Liquidity
 กดขอ TEST Token ก่อนจากที่นี้ https://amarok-testnet.coinhippo.io/
@@ -110,3 +104,6 @@ Kovan : 0xB5AabB55385bfBe31D627E2A717a7B189ddA4F8F
 ขั้นตอนการสร้าง Liquidity ให้ไปที่
 
 https://testnet.amarok.connextscan.io/router/ใส่_router_address
+
+ตัวอย่างเช่น
+https://testnet.amarok.connextscan.io/router/0x5C3343A64FF3dF33794bceFC73D634593Cd3750C
