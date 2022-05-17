@@ -11,21 +11,27 @@ https://testnet.amarok.connextscan.io/router/0x5C3343A64FF3dF33794bceFC73D634593
 
 - Test Bridge 
 Gorli -> Rinkeby Complete
+
 Transaction Hash : 0xa84110555e89de023a0072e75b58851ebaae9c20b38d3f7b47bf42049fc41707
 
 Gorli -> Kovan Complete
+
 Transaction Hash : 0x0081c2a5d923765b72d940102eb2fbd0a2474097a3c6377ef731bda96fed5ae5
 
 Rinkeby -> Gorli ** Have long time
+
 Transaction Hash : 0xd2c4291874a2fe1d798c418afd6553c3f1e1760eccd0a76776542c665e4e7b1b
 
 Rinkeby -> Kovan Complete
+
 Transaction Hash : 0x54bfee582ef3152cb62b071734540aaef8195ee5650bdea034e525096ca35390
 
 Kovan -> Rinkeby Complete
+
 Transaction Hash : 0xb602164d1f27496856843eff1a832f5297373ecb2246016591aa423e02ef3c84
 
 Kovan -> Gorli ** Have long time
+
 Transaction Hash : 0x417baffa39976d6f15416746a463d261b658ea6d736628f2c256e9dd38993117
 
 Ps. Upon installation I encountered some issues in the incomplete manual.
