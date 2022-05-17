@@ -43,49 +43,6 @@ privateKey: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 10 สร้างไฟล์ config.json
 > cp config.example.json config.json
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 11. แก้ไข file config.json
 Edit ให้เป็นแบบนี้
 {
@@ -138,7 +95,6 @@ Edit ให้เป็นแบบนี้
 ดู log ทำงานปกติไหม
 > docker logs --follow --tail 100 router
 
-
 14. ตรวจสอบ web3SignerUrl ทำงานถูกต้องไหม
 >  curl localhost:8000/config
 จะะต้องได้ Address ที่เราเอา Private Key ไปใส่ออกมา
@@ -154,4 +110,3 @@ Kovan : 0xB5AabB55385bfBe31D627E2A717a7B189ddA4F8F
 ขั้นตอนการสร้าง Liquidity ให้ไปที่
 
 https://testnet.amarok.connextscan.io/router/ใส่_router_address
-
