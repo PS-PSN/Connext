@@ -1,0 +1,157 @@
+คู่มือการติดตั้ง Connext Router
+1. ติดตั้ง Docker
+> curl -fsSL get.docker.com -o get-docker.sh
+> sudo sh get-docker.sh
+
+2. ติดตั้ง Docker-compose ตัวล่าสุด
+>  VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+
+>  DESTINATION=/usr/local/bin/docker-compose
+
+>  sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+
+>  sudo chmod 755 $DESTINATION
+
+3. ตรวจสอบ Docker-compose 
+> docker-compose --version
+4. ติดตั้ง Router
+
+> git clone https://github.com/connext/nxtp-router-docker-compose.git
+
+> cd nxtp-router-docker-compose
+
+> git checkout amarok
+
+> docker pull ghcr.io/connext/router:0.2.0-alpha.10
+
+5. สร้างไฟล์ .env
+> cp .env.example .env
+
+6. แก้ไข file .env
+ตรง ROUTER_VERSION ให้ใส่ค่านี้ลงไป
+ROUTER_VERSION=0.2.0-alpha.10
+
+7. สร้างไฟล์ key.yaml
+> cp key.example.yaml key.yaml
+
+8. แก้ไข  file key.yaml 
+โดยเอา privateKey มาใส่ แทนตัวอีกษรสีแดง
+type: "file-raw"
+keyType: "SECP256K1"
+privateKey: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+10 สร้างไฟล์ config.json
+> cp config.example.json config.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11. แก้ไข file config.json
+Edit ให้เป็นแบบนี้
+{
+  "logLevel": "debug",
+  "sequencerUrl": "https://sequencer.testnet.connext.ninja",
+  "web3SignerUrl": "http://signer:9000",
+  "redis": {
+    "host": "redis",
+    "port": 6379
+  },
+  "server": {
+    "adminToken": "abacus",
+    "port": 8080
+  },
+  "chains": {
+    "1111": {
+      "assets": [
+        {
+          "address": "0xB7b1d3cC52E658922b2aF00c5729001ceA98142C",
+          "name": "TEST"
+        }
+      ],
+      "providers": ["https://rinkeby.infura.io/v3/b3476c4fc673421cbd73840cb108c136"]
+    },
+    "2221": {
+      "providers": ["https://kovan.infura.io/v3/b3476c4fc673421cbd73840cb108c136"],
+      "assets": [
+        {
+          "address": "0xB5AabB55385bfBe31D627E2A717a7B189ddA4F8F",
+          "name": "TEST"
+        }
+      ]
+    },
+        "3331": {
+      "providers": ["https://kovan.infura.io/v3/b3476c4fc673421cbd73840cb108c136"],
+      "assets": [
+        {
+          "address": "0xd426e23a6a9524101cdc017e01ddc3262b7aa65d",
+          "name": "TEST"
+        }
+      ]
+    }
+  }
+}
+
+12. Start Docker
+> docker-compose up -d
+
+13. Verify Router
+ดู log ทำงานปกติไหม
+> docker logs --follow --tail 100 router
+
+
+14. ตรวจสอบ web3SignerUrl ทำงานถูกต้องไหม
+>  curl localhost:8000/config
+จะะต้องได้ Address ที่เราเอา Private Key ไปใส่ออกมา
+
+15. ขั้นตอนการสร้าง Liquidity
+กดขอ TEST Token ก่อนจากที่นี้ https://amarok-testnet.coinhippo.io/
+หลังจากขอมาแล้ว ให้เอา address ต่อไปนี้ไป add token ที่ metamask ตามแต่ละเชน ก็จะเห็น TEST Token ที่ขอไปขึ้นมา 
+
+Rinkeby : 0xB7b1d3cC52E658922b2aF00c5729001ceA98142C
+Görli : 0xd426e23a6a9524101cdc017e01ddc3262b7aa65d
+Kovan : 0xB5AabB55385bfBe31D627E2A717a7B189ddA4F8F
+
+ขั้นตอนการสร้าง Liquidity ให้ไปที่
+
+https://testnet.amarok.connextscan.io/router/ใส่_router_address
+
